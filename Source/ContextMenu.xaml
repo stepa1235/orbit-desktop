@@ -1,0 +1,92 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="OrbitMenu" TargetType="ContextMenu">
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="UseLayoutRounding" Value="True" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Foreground" Value="#F0F0F1" />
+        <Setter Property="MaxWidth" Value="346" />
+        <Setter Property="Placement" Value="MousePoint" />
+        <Setter Property="HorizontalOffset" Value="-4" />
+        <Setter Property="VerticalOffset" Value="-4" />
+        <Setter Property="HasDropShadow" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContextMenu">
+                    <Border Margin="10" CornerRadius="14" BorderThickness="1" BorderBrush="#636366">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0.55,1">
+                                <GradientStop Color="#F328282C" Offset="0" />
+                                <GradientStop Color="#F1141418" Offset="1" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="18" ShadowDepth="4" Direction="270" Opacity="0.55" />
+                        </Border.Effect>
+                        <DockPanel MinWidth="258" Margin="6,5,6,6">
+                            <Border DockPanel.Dock="Top" Padding="9,7,8,8" Margin="0,0,0,4"
+                                    BorderThickness="0,0,0,1" BorderBrush="#36FFFFFF">
+                                <DockPanel LastChildFill="True">
+                                    <Grid DockPanel.Dock="Right" Width="16" Height="16" Margin="8,0,0,0"
+                                          ToolTip="Orbit Desktop">
+                                        <Ellipse Width="14" Height="7" Stroke="#B6B6BB" StrokeThickness="1"
+                                                 RenderTransformOrigin=".5,.5">
+                                            <Ellipse.RenderTransform><RotateTransform Angle="-34" /></Ellipse.RenderTransform>
+                                        </Ellipse>
+                                        <Ellipse Width="4" Height="4" Fill="#EEEEEF" />
+                                    </Grid>
+                                    <TextBlock Text="{TemplateBinding Tag}" TextTrimming="CharacterEllipsis"
+                                               FontSize="11" FontWeight="SemiBold" Foreground="#BEBEC4"
+                                               VerticalAlignment="Center" />
+                                </DockPanel>
+                            </Border>
+                            <ItemsPresenter />
+                        </DockPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="OrbitMenuItem" TargetType="MenuItem">
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="#E9E9ED" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="MenuItem">
+                    <Border x:Name="Tile" Background="{TemplateBinding Background}" CornerRadius="7"
+                            MinHeight="34" Padding="9,4,10,4">
+                        <DockPanel LastChildFill="True">
+                            <ContentPresenter DockPanel.Dock="Left" ContentSource="Icon" Width="16" Height="16"
+                                              Margin="0,0,10,0" VerticalAlignment="Center" />
+                            <ContentPresenter ContentSource="Header" RecognizesAccessKey="True"
+                                              VerticalAlignment="Center" />
+                        </DockPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsHighlighted" Value="True">
+                            <Setter TargetName="Tile" Property="Background" Value="#26FFFFFF" />
+                            <Setter Property="Foreground" Value="White" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Tile" Property="Opacity" Value="0.45" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="OrbitMenuRule" TargetType="Separator">
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Separator">
+                    <Border Height="1" Margin="9,4,9,4" Background="#2FFFFFFF" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
